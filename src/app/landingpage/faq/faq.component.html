@@ -1,0 +1,17 @@
+<div class="bg-lightGray rounded-t-xl md:rounded-none py-5 md:py-10 px-3">
+  <div class="md:bg-white max-w-content mx-auto md:py-5 md:px-20 md:rounded-3xl md:shadow-lg">
+    <h2 class="text-extrabold-italic text-2xl md:text-4xl text-center mb-5">
+      <span class="text-primary">Preguntas </span> <span class="text-secondary">frecuentes</span>
+    </h2>
+
+    <div class="flex flex-col items-center">
+      <ul class="list-none text-lettersGray mb-3">
+        <li class="underline" *ngFor='let question of getFaq'><a [href]="question.url">{{ question.label }}</a></li>
+      </ul>
+
+      <button (click)="toggleShowMore()" class="bg-secondary text-white text-sm py-1 px-3 rounded-full">
+        {{ showAllFaq ? 'Ver menos' : 'Ver más' }}
+      </button>
+    </div>
+  </div>
+</div>
