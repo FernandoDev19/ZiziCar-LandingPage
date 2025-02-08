@@ -118,6 +118,7 @@
     </p>
     }
     <app-vehicle-form
+      #vehicleFormComponent
       class="transition-opacity duration-500 ease-in-out"
       [ngClass]="{
         'opacity-0 pointer-events-none z-0 absolute left-0 top-0':
@@ -128,6 +129,7 @@
     ></app-vehicle-form>
 
     <app-contact-form
+      #contactFormComponent
       class="transition-opacity duration-500 ease-in-out opacity-0 z-0 absolute left-0 top-0 pointer-events-none"
       [ngClass]="{
         'opacity-100 pointer-events-auto z-1 !static': isShowingContactForm

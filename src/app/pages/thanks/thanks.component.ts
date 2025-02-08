@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { NavComponent } from "../../components/header/nav/nav.component";
 import { FooterComponent } from "../../components/footer/footer.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-thanks',
-  imports: [NavComponent, FooterComponent],
+  imports: [NavComponent, FooterComponent, RouterLink],
   templateUrl: './thanks.component.html',
   styleUrl: './thanks.component.css'
 })

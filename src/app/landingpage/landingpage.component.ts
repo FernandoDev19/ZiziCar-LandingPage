@@ -16,7 +16,7 @@ import { CommentsComponent } from "./comments/comments.component";
 
 @Component({
   selector: 'app-landingpage',
-  imports: [NavComponent, FooterComponent, RequestFormComponent, ResumeComponent, WhyUsComponent, AlliesComponent, AvailableCitiesComponent, FaqComponent, GammaExamplesComponent, NatureCareComponent, PutItToWorkComponent, NewsComponent, OtherServicesComponent, CommentsComponent],
+  imports: [NavComponent, FooterComponent, RequestFormComponent, ResumeComponent, WhyUsComponent, AlliesComponent, AvailableCitiesComponent, FaqComponent, GammaExamplesComponent, NatureCareComponent, PutItToWorkComponent, /*NewsComponent,*/ OtherServicesComponent, /*CommentsComponent*/],
   templateUrl: './landingpage.component.html',
   styleUrl: './landingpage.component.css'
 })

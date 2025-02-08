@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommunicationService } from '../../common/services/communication.service';
 
 @Component({
@@ -27,5 +27,6 @@ export class AlertComponent implements OnInit {
   toggleAlert(){
     this.messagesOld.push(this.message);
     this.message = '';
+    console.log('Se presiono el btn de alert');
   }
 }

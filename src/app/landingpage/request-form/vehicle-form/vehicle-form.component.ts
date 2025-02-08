@@ -78,6 +78,7 @@ export class VehicleFormComponent implements OnInit, AfterViewInit {
   transmissions!: GetTransmissionInterface[];
   countries: { name: string; cities: { city_id: number; city_name: string }[] }[] = [];
   filteredCountries: { name: string; cities: { city_id: number; city_name: string }[] }[] = [];
+  averagePricesForSelect!: {gammaId: string; averagePrice: number}[];
 
   //Options selected
   gammaSelected: {
@@ -115,6 +116,7 @@ export class VehicleFormComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
+    this.getAveragesPrices();
     this.formInit();
     this.getData();
     this.checkScreen();
@@ -172,13 +174,13 @@ export class VehicleFormComponent implements OnInit, AfterViewInit {
         this.gammaSelected = {
           name: getGammaSelectedNow?.name || 'Error',
           image: getGammaSelectedNow?.image_url || '',
-          average_price: getGammaSelectedNow?.average_price || 0,
+          average_price: this.getAveragePriceForGamma(getGammaSelectedNow?.id || '') || 0,
         };
         this.communicationService.dataForResume.emit({
           gamma: {
             name: this.gammaSelected.name,
             image: this.gammaSelected.image,
-            average_price: this.gammaSelected.average_price
+            average_price: this.getAveragePriceForGamma(getGammaSelectedNow?.id || '') || 0
           }
         });
         this.popoverGamma.hide();
@@ -292,7 +294,7 @@ export class VehicleFormComponent implements OnInit, AfterViewInit {
         (gamma) => gamma.id === option
       );
       this.gammaSelected.image = getGammaSelectedNow?.image_url || '';
-      this.gammaSelected.average_price = getGammaSelectedNow?.average_price || 0;
+      this.gammaSelected.average_price = this.getAveragePriceForGamma(getGammaSelectedNow?.id || '') || 0;
     } else if (type === 'transmission') {
       const getTransmissionSelectedNow = this.transmissions.find(
         (transmission) => transmission.id === option
@@ -368,6 +370,25 @@ export class VehicleFormComponent implements OnInit, AfterViewInit {
         this.communicationService.loading.emit(false);
       },
     });
+  }
+
+  getAveragesPrices(){
+    this.communicationService.loading.emit(true);
+    this.gammaService.getAveragePrices().subscribe({
+      next: price => {
+        this.averagePricesForSelect = price;
+        this.getGammas();
+      },
+      error: e => {
+        console.error('Ha ocurrido un error al obtener los precios promedios');
+        this.communicationService.loading.emit(false);
+      }
+    });
+  }
+
+  getAveragePriceForGamma(gammaId: string) {
+    const gammaPrice = this.averagePricesForSelect.find(price => price.gammaId === gammaId);
+    return gammaPrice ? gammaPrice?.averagePrice : 0;
   }
 
   getTransmissions() {

@@ -113,7 +113,6 @@ export class RequestFormComponent implements OnInit{
         next: requestCreated => {
           console.log(requestCreated);
           this.router.navigate(['/thanks']);
-          this.communicationService.message.emit('La solicitud se ha generado con exito.');
           this.communicationService.loading.emit(false);
         },
         error: e => {

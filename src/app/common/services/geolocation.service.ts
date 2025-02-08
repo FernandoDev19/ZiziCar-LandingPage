@@ -11,7 +11,7 @@ export class GeolocationService {
 
   private urlBase: string = environment.apiUrl;
   private geolocationRoutes = {
-    getAll: '/geolocation'
+    getAll: '/geolocations'
   }
 
   constructor(private http: HttpClient) { }

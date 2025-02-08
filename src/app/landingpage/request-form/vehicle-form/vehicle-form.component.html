@@ -69,8 +69,8 @@
                   <small>
                     Promedio
                     {{
-                      gamma.average_price
-                        ? (gamma.average_price
+                      getAveragePriceForGamma(gamma.id)
+                        ? (getAveragePriceForGamma(gamma.id)
                           | currency : "COP" : "symbol" : "1.0-0")
                         : "Calculando..."
                     }}

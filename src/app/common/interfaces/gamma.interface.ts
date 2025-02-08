@@ -1,5 +1,5 @@
 export interface GetGammaInterface{
-  id: number;
+  id: string;
   name: string;
   image_url: string;
   average_price: number;
