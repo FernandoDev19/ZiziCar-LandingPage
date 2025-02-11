@@ -128,8 +128,8 @@ export class VehicleFormComponent implements OnInit, AfterViewInit {
 
   formInit() {
     this.vehicleForm = this.fb.group({
-      entry_city_id: ['', [Validators.required]],
-      devolution_city_id: ['', [Validators.required]],
+      id_entry_city: ['', [Validators.required]],
+      id_devolution_city: ['', [Validators.required]],
       gamma_id: ['', [Validators.required]],
       transmission_id: ['', [Validators.required]],
       receive_at_airport: [false],
@@ -214,11 +214,11 @@ export class VehicleFormComponent implements OnInit, AfterViewInit {
 
       if(entryCitySelectedNow?.city_name != this.entryCitySelected){
         this.entryCitySelected = entryCitySelectedNow?.city_name || 'Error';
-        this.vehicleForm.get('entry_city_id')?.setValue(entryCitySelectedNow?.city_id);
+        this.vehicleForm.get('id_entry_city')?.setValue(entryCitySelectedNow?.city_id);
 
         if(entryCitySelectedNow?.city_name != this.devolutionCitySelected){
           this.devolutionCitySelected = entryCitySelectedNow?.city_name || 'Error';
-          this.vehicleForm.get('devolution_city_id')?.setValue(entryCitySelectedNow?.city_id);
+          this.vehicleForm.get('id_devolution_city')?.setValue(entryCitySelectedNow?.city_id);
         }
 
         this.popoverEntryCity.hide();
@@ -236,7 +236,7 @@ export class VehicleFormComponent implements OnInit, AfterViewInit {
       }
 
       if(devolutionCitySelectedNow?.city_name != this.devolutionCitySelected){
-        this.vehicleForm.get('devolution_city_id')?.setValue(devolutionCitySelectedNow?.city_id);
+        this.vehicleForm.get('id_devolution_city')?.setValue(devolutionCitySelectedNow?.city_id);
         this.devolutionCitySelected = devolutionCitySelectedNow?.city_name || 'Error';
         this.popoverDevolutionCity.hide();
 
@@ -361,7 +361,7 @@ export class VehicleFormComponent implements OnInit, AfterViewInit {
   getGammas() {
     this.gammaService.getGammas().subscribe({
       next: (gammas) => {
-        this.gammas = gammas;
+        this.gammas = gammas.sort((a, b) => a.precio_promedio - b.precio_promedio);
         this.communicationService.gammas.emit(gammas);
         this.getTransmissions();
       },

@@ -1,31 +1,33 @@
 export interface GetRequestDto{
-  customer_id: string;
-  entry_city_id: number;
+  name: string;
+  transmision_id: string;
+  gamma_id: string;
+  phone: string;
+  email?: string | null;
+  comments: string | null;
+  id_entry_city: number;
   receive_at_airport: boolean;
-  devolution_city_id: number;
+  id_devolution_city: number;
   returns_at_airport: boolean;
-  entry_date: Date;
-  entry_time: string;
-  devolution_date: Date;
+  devolution_date: string;
+  entry_date: string;
   devolution_time: string;
-  gamma_id: number;
-  transmission_id: number;
-  comments?: string;
+  entry_time: string;
 }
 
 export interface CreateRequestDto{
   name: string;
+  transmision_id: string;
+  gamma_id: string;
   phone: string;
-  email?: string;
-  entry_city_id: number;
+  email?: string | null;
+  comments: string | null;
+  id_entry_city: number;
   receive_at_airport: boolean;
-  devolution_city_id: number;
+  id_devolution_city: number;
   returns_at_airport: boolean;
-  entry_date: Date;
-  entry_time: string;
-  devolution_date: Date;
+  devolution_date: string;
+  entry_date: string;
   devolution_time: string;
-  gamma_id: number;
-  transmission_id: number;
-  comments?: string;
+  entry_time: string;
 }

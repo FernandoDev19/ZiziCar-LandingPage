@@ -1,74 +1,68 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { NgClass, NgFor } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { allFaq } from './constants/faq.constant';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faSearch, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-faq',
-  imports: [CommonModule],
+  imports: [NgFor, NgClass, FontAwesomeModule],
   templateUrl: './faq.component.html',
   styleUrl: './faq.component.css'
 })
-export class FaqComponent {
-  faq = [
-    {
-      label: "¿Qué necesito para alquilar el carro?",
-      url: ""
-    },
-    {
-      label: "¿Necesito mi propio seguro?",
-      url: ""
-    },
-    {
-      label: "¿Pueden otras personas conducir el carro que he alquilado?",
-      url: ""
-    },
-  ];
-
-  allFaq = [
-    {
-      label: "¿Qué necesito para alquilar el carro?",
-      url: ""
-    },
-    {
-      label: "¿Necesito mi propio seguro?",
-      url: ""
-    },
-    {
-      label: "¿Pueden otras personas conducir el carro que he alquilado?",
-      url: ""
-    },
-    {
-      label: "¿Qué métodos de pago acepta ZiziCar?",
-      url: ""
-    },
-    {
-      label: '¿Qué impuestos están cubiertos en el alquiler?',
-      url: ''
-    },
-    {
-      label: '¿Cómo puedo encontrar las mejores ofertas?',
-      url: ''
-    },
-    {
-      label: '¿Cuántos kilómetros tengo disponibles?',
-      url: ''
-    },
-    {
-      label: '¿Con quién me contacto en caso de accidente?',
-      url: ''
-    }
-  ]
-
+export class FaqComponent implements OnInit {
+  faSearch: IconDefinition = faSearch;
   showAllFaq: boolean = false;
+  filteredAllFaq: { label: string; answer: string; isShowingAnswer: boolean; }[] = [];
+
+  ngOnInit(): void {
+      this.filteredAllFaq = allFaq;
+  }
 
   get getFaq(){
+    let faq = [];
     if(this.showAllFaq){
-      return this.allFaq;
+      for(let i = 0; i < this.filteredAllFaq.length; i++){
+        faq.push(this.filteredAllFaq[i]);
+      }
     }else{
-      return this.faq;
+      for(let i = 0; i < this.filteredAllFaq.length - 5; i++){
+        faq.push(this.filteredAllFaq[i]);
+      }
+    }
+    return faq;
+  }
+
+  showAnswer(n: number) {
+    const isCurrentlyOpen = this.filteredAllFaq[n].isShowingAnswer;
+
+    this.filteredAllFaq.forEach(faq => faq.isShowingAnswer = false);
+
+    if (!isCurrentlyOpen) {
+      this.filteredAllFaq[n].isShowingAnswer = true;
     }
   }
 
   toggleShowMore(){
     this.showAllFaq = !this.showAllFaq;
   }
+
+  searchFaq(search: Event) {
+    let value = (<HTMLInputElement>search.target).value.trim().toLowerCase();
+    this.showAllFaq = true;
+
+    if (value === '') {
+      this.filteredAllFaq = [...allFaq];
+      this.showAllFaq = false;
+      return;
+    }
+
+    let normalizedValue = value.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+    this.filteredAllFaq = allFaq.filter(faq => {
+      let normalizedLabel = faq.label.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      return normalizedLabel.includes(normalizedValue);
+    });
+  }
+
 }

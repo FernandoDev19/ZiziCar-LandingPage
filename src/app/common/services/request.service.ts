@@ -11,7 +11,7 @@ export class RequestService {
 
   private urlBase: string = environment.apiUrl;
   private requestRoutes = {
-    create: '/request/create'
+    create: '/requests'
   }
 
   constructor(private http: HttpClient) { }
