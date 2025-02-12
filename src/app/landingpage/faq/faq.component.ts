@@ -26,7 +26,7 @@ export class FaqComponent implements OnInit {
         faq.push(this.filteredAllFaq[i]);
       }
     }else{
-      for(let i = 0; i < this.filteredAllFaq.length - 5; i++){
+      for(let i = 0; i < this.filteredAllFaq.length - 24; i++){
         faq.push(this.filteredAllFaq[i]);
       }
     }

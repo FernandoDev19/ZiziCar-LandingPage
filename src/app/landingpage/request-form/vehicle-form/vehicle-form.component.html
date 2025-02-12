@@ -179,11 +179,11 @@
       </div>
     </div>
     <!-- Errores de Gamma y Transmission -->
-    <div class="flex-col md:flex gap-3">
+    <div class="md:flex md:flex-row flex-col gap-3">
       @if(vehicleForm.get('gamma_id')?.invalid &&
       vehicleForm.get('gamma_id')?.touched){
       @if(vehicleForm.get('gamma_id')?.errors?.['required']){
-      <small class="text-sm text-red-500 w-1/2"
+      <small class="text-sm text-red-500 w-full md:w-1/2"
         >Este campo es obligatorio</small
       >
       } } @else {

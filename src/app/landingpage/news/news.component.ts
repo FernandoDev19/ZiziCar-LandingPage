@@ -12,23 +12,23 @@ import { GetNewInterface } from '../../common/interfaces/new.interface';
   styleUrl: './news.component.css'
 })
 export class NewsComponent implements OnInit {
-  news!: GetNewInterface[];
+  news!: number[];
 
   constructor(
     private newService: NewService
   ){}
 
   ngOnInit(): void {
-    this.getActiveNews();
+    // this.getActiveNews();
   }
 
-  getActiveNews(){
-    this.newService.getActiveNews().subscribe({
-      next: news => {
-        this.news = news;
-      }
-    });
-  }
+  // getActiveNews(){
+  //   this.newService.getActiveNews().subscribe({
+  //     next: news => {
+  //       this.news = news;
+  //     }
+  //   });
+  // }
 
   get numVisible(){
     if(window.innerWidth <= 714){

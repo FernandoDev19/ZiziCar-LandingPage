@@ -41,6 +41,7 @@ import { GetGammaInterface } from '../../../common/interfaces/gamma.interface';
 export class VehicleFormComponent implements OnInit, AfterViewInit {
   vehicleForm!: FormGroup;
   today = new Date();
+  es: any;
   minDevolutionDate: Date | null = null;
   times = [
     '12:00 AM', '12:30 AM', '1:00 AM', '1:30 AM', '2:00 AM', '2:30 AM',
@@ -113,7 +114,23 @@ export class VehicleFormComponent implements OnInit, AfterViewInit {
     private communicationService: CommunicationService,
     private geolocationService: GeolocationService,
     private fb: FormBuilder
-  ) {}
+  ) {
+    this.es = {
+      firstDayOfWeek: 1,
+      dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+      dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+      dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+      monthNames: [
+        'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+        'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+      ],
+      monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+      today: 'Hoy',
+      clear: 'Limpiar',
+      dateFormat: 'dd/mm/yy',
+      weekHeader: 'Sem',
+    };
+  }
 
   ngOnInit(): void {
     this.getAveragesPrices();
