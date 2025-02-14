@@ -6,7 +6,6 @@ import {
   ElementRef,
   EventEmitter,
   HostListener,
-  OnChanges,
   OnInit,
   Output,
   ViewChild,
@@ -272,6 +271,7 @@ export class VehicleFormComponent implements OnInit, AfterViewInit {
       if(this.entryDateSelected != dateFormatted){
         this.entryDateSelected = dateFormatted;
         this.vehicleForm.get('entry_date')?.setValue(option);
+        this.vehicleForm.get('devolution_date')?.setValue('');
       }
 
       this.scrollToBottomFunction(20);
