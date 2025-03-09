@@ -5,7 +5,8 @@ import { Component, HostListener, OnInit } from '@angular/core';
   selector: 'app-header-nav',
   imports: [CommonModule],
   templateUrl: './nav.component.html',
-  styleUrl: './nav.component.css'
+  styleUrl: './nav.component.css',
+  standalone: true,
 })
 export class NavComponent implements OnInit {
   isMobile = false;

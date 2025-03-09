@@ -8,6 +8,7 @@ import { CommunicationService } from '../../../common/services/communication.ser
   selector: 'app-contact-form',
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './contact-form.component.html',
+  standalone: true,
   styleUrl: './contact-form.component.css'
 })
 export class ContactFormComponent implements OnInit {

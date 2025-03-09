@@ -5,6 +5,7 @@ import { CarouselModule } from 'primeng/carousel';
 
 @Component({
   selector: 'app-allies',
+  standalone: true,
   imports: [CommonModule, CarouselModule, ButtonModule, ],
   templateUrl: './allies.component.html',
   styleUrl: './allies.component.css'

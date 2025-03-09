@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-thanks',
   imports: [NavComponent, FooterComponent, RouterLink],
   templateUrl: './thanks.component.html',
+  standalone: true,
   styleUrl: './thanks.component.css'
 })
 export class ThanksComponent {

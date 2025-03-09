@@ -8,6 +8,7 @@ import { GetNewInterface } from '../../common/interfaces/new.interface';
 @Component({
   selector: 'app-news',
   imports: [CarouselModule, ButtonModule],
+  standalone: true,
   templateUrl: './news.component.html',
   styleUrl: './news.component.css'
 })

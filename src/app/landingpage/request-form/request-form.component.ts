@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-request-form',
   imports: [CommonModule, VehicleFormComponent, ContactFormComponent],
+  standalone: true,
   templateUrl: './request-form.component.html',
   styleUrl: './request-form.component.css'
 })

@@ -18,7 +18,8 @@ import { CommentsComponent } from "./comments/comments.component";
   selector: 'app-landingpage',
   imports: [NavComponent, FooterComponent, RequestFormComponent, ResumeComponent, WhyUsComponent, AlliesComponent, AvailableCitiesComponent, FaqComponent, GammaExamplesComponent, NatureCareComponent, PutItToWorkComponent, /*NewsComponent,*/ OtherServicesComponent, NewsComponent],
   templateUrl: './landingpage.component.html',
-  styleUrl: './landingpage.component.css'
+  styleUrl: './landingpage.component.css',
+  standalone: true
 })
 export class LandingpageComponent {
 

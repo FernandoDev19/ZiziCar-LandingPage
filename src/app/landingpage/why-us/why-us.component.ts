@@ -7,6 +7,7 @@ import { faPlay, IconDefinition } from '@fortawesome/free-solid-svg-icons';
   selector: 'app-why-us',
   imports: [CommonModule, FontAwesomeModule],
   templateUrl: './why-us.component.html',
+  standalone: true,
   styleUrl: './why-us.component.css'
 })
 export class WhyUsComponent {

@@ -12,12 +12,14 @@
 
     <div class="flex flex-col items-center">
       <ul id="faq-container" class="list-none text-lettersGray mb-3 w-full">
-        <li class="mb-2 flex flex-col gap-3" *ngFor='let question of getFaq; let i = index'>
-          <button (click)="showAnswer(i)" class="flex justify-between gap-20 text-start w-full py-1 px-2 hover:bg-gray-200 rounded-md">
-            {{ question.label }} <strong class="text-primary">{{ question.isShowingAnswer ? '-': '+' }}</strong>
-          </button>
-          <p [ngClass]="question.isShowingAnswer ? 'opacity-1 max-h-96' : 'opacity-0 max-h-0'" [style]="question.isShowingAnswer ? 'line-height: 1;' : 'line-height: 0;'" class="text-gray-400 transition-all duration-150 ease-in px-5">{{ question.answer }}</p>
-        </li>
+        @for(question of getFaq; track $index; let i = $index){
+          <li class="mb-2 flex flex-col gap-3">
+            <button (click)="showAnswer(i)" class="flex justify-between gap-20 text-start w-full py-1 px-2 hover:bg-gray-200 rounded-md">
+              {{ question.label }} <strong class="text-primary">{{ question.isShowingAnswer ? '-': '+' }}</strong>
+            </button>
+            <p [ngClass]="question.isShowingAnswer ? 'opacity-1 max-h-96' : 'opacity-0 max-h-0'" [style]="question.isShowingAnswer ? 'line-height: 1;' : 'line-height: 0;'" class="text-gray-400 transition-all duration-150 ease-in px-5">{{ question.answer }}</p>
+          </li>
+        }
       </ul>
 
       <button (click)="toggleShowMore()" class="bg-secondary text-white text-sm py-1 px-3 rounded-full">

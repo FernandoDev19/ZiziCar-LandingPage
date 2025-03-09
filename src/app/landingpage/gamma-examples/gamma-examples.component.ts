@@ -7,6 +7,7 @@ import { CommunicationService } from '../../common/services/communication.servic
 @Component({
   selector: 'app-gamma-examples',
   imports: [CarouselModule, ButtonModule],
+  standalone: true,
   templateUrl: './gamma-examples.component.html',
   styleUrl: './gamma-examples.component.css'
 })

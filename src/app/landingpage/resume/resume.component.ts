@@ -8,7 +8,8 @@ import { faRupiahSign } from '@fortawesome/free-solid-svg-icons';
   selector: 'app-resume',
   imports: [CommonModule, PopoverModule],
   templateUrl: './resume.component.html',
-  styleUrl: './resume.component.css'
+  styleUrl: './resume.component.css',
+  standalone: true,
 })
 export class ResumeComponent implements OnInit {
   @ViewChild('popoverResume') popoverResume!: Popover;

@@ -6,6 +6,7 @@ import { CarouselModule } from 'primeng/carousel';
 
 @Component({
   selector: 'app-comments',
+  standalone: true,
   imports: [CarouselModule, ButtonModule, FontAwesomeModule],
   templateUrl: './comments.component.html',
   styleUrl: './comments.component.css'

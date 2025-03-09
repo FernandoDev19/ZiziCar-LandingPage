@@ -35,6 +35,7 @@ import { GetGammaInterface } from '../../../common/interfaces/gamma.interface';
   selector: 'app-vehicle-form',
   imports: [CommonModule, PopoverModule, ReactiveFormsModule, ListboxModule, FontAwesomeModule, ToggleSwitchModule, DatePickerModule],
   templateUrl: './vehicle-form.component.html',
+  standalone: true,
   styleUrl: './vehicle-form.component.css',
 })
 export class VehicleFormComponent implements OnInit, AfterViewInit {

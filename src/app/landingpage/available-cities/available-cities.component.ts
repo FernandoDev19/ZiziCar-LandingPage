@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-available-cities',
   imports: [CommonModule],
+  standalone: true,
   templateUrl: './available-cities.component.html',
   styleUrl: './available-cities.component.css'
 })

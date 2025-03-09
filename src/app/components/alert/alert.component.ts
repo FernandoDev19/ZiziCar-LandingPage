@@ -5,6 +5,7 @@ import { CommunicationService } from '../../common/services/communication.servic
 @Component({
   selector: 'app-alert',
   imports: [CommonModule],
+  standalone: true,
   templateUrl: './alert.component.html',
   styleUrl: './alert.component.css'
 })

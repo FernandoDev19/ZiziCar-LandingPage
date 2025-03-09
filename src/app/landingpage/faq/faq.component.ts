@@ -6,7 +6,8 @@ import { faSearch, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-faq',
-  imports: [NgFor, NgClass, FontAwesomeModule],
+  imports: [NgClass, FontAwesomeModule],
+  standalone: true,
   templateUrl: './faq.component.html',
   styleUrl: './faq.component.css'
 })
